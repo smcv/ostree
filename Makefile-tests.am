@@ -120,10 +120,16 @@ dist_installed_test_data = tests/archive-test.sh \
 	tests/admin-test.sh \
 	tests/basic-test.sh \
 	tests/test-basic-user.sh \
-	tests/corrupt-repo-ref.js \
 	tests/pre-endian-deltas-repo-big.tar.xz \
 	tests/pre-endian-deltas-repo-little.tar.xz \
 	$(NULL)
+
+js_test_data = tests/corrupt-repo-ref.js
+if BUILDOPT_GJS
+dist_installed_test_data += $(js_test_data)
+else
+EXTRA_DIST += $(js_test_data)
+endif
 
 EXTRA_DIST += tests/libtest.sh 
 
